@@ -6,16 +6,108 @@
     <span class="text_size">Registre uma venda para dar baixa no estoque e somar o lucro.</span>
 </div>
 
-<form action="">
-    <button>
-        <span>Cadastrar</span>
-    </button>
+<form action="{{ url_for('vendas.new_venda' ) if not dados.produto else url_for('vendas.update_venda', id=dados.id ) }}" method="post" class="content_box column">
+    {% if dados.produto %}
+
+    <div class="row">
+        <strong>Atualizar produto</strong>
+
+    </div>
+    <div class="row2">
+        <div class="entry">
+            <span>Codigo</span>
+            <input type="text" name="code" value="{{ dados.produto }}" placeholder="ex: 83232223" class="input">
+        </div>
+        <div class="entry">
+            <span>Produto</span>
+            <select name="produto" class="input">
+                <option hidden>Selecionar Produto</option>
+                {% for p in dados.produtos %}
+                <option value="{{ p.id }}" {{ "selected" if p.id == dados.id else "" }}>{{ p.nome }} -> {{ p.preco_venda }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="entry">
+            <span>Quantidade</span>
+            <input type="number" required min="1"  value="{{ dados.produto['qtd'] }}" name="qtd" placeholder="ex: 83232223" class="input">
+        </div>
+        <div class="column">
+            <span></span><span></span>
+            <div class="row2">
+                <a href="{{ url_for('vendas.index' ) }}" class="button button2">
+                    <span>Cancelar</span>
+                </a>
+                <button class="button">
+                    <span>Atualizar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    {% else %}
+
+    <div class="row">
+        <strong>Dados do roduto</strong>
+
+    </div>
+    <div class="row2">
+        <div class="entry">
+            <span>Codigo</span>
+            <input type="text" name="code" placeholder="ex: 83232223" class="input">
+        </div>
+        <div class="entry">
+            <span>Produto</span>
+            <select name="produto" class="input">
+                <option hidden>Selecionar Produto</option>
+                {% for p in dados.produtos %}
+                <option value="{{ p.id }}">{{ p.nome }} -> {{ p.preco_venda }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="entry">
+            <span>Quantidade</span>
+            <input type="number" required min="1" value="1" name="qtd" placeholder="ex: 83232223" class="input">
+        </div>
+        <div class="column">
+            <span></span><span></span>
+            <button class="button">
+                <span>Adicionar</span>
+            </button>
+        </div>
+    </div>
+    {% endif %}
+
+    <hr>
+
+    <div class="row2">
+
+        <div class="row2">
+            <strong>Produtos:</strong>
+            <span>{{ dados.produtos_carrinho }}</span>
+        </div>
+        <div class="row2">
+            <strong>Total:</strong>
+            <span>{{ dados.total_carrinho }}</span>
+        </div>
+
+    </div>
+
 </form>
 
 <div class="content_box">
-    <strong>Últimas vendas</strong>
+    <div class="row">
+        <strong>Dados do Carrinho</strong>
+        <div class="row2">
+            <a href="{{ url_for('vendas.cancelar' ) }}" class="button button2">
+                <span>Cancelar</span>
+            </a>
+            <a href="{{ url_for('vendas.finalizar' ) }}" class="button button">
+                <span>Finalizar</span>
+            </a>
+        </div>
+    </div>
 
-    {% if 0==1 %}
+    {% if dados.carrinho %}
 
     <div class="table">
         <table>
@@ -23,10 +115,31 @@
                 <tr>
                     <td>PRODUTO</td>
                     <td>QTD</td>
+                    <td>PREÇO</td>
                     <td>SUBTOTAL</td>
-                    <td>DATA</td>
+                    <td></td>
                 </tr>
             </thead>
+            <tbody>
+                {% for id, iten in dados.carrinho.items() %}
+                <tr>
+                    <td>{{ iten["produto"] }}</td>
+                    <td>{{ iten["qtd"] }}</td>
+                    <td>{{ iten["preco"] }}</td>
+                    <td>{{ iten["subtotal"] }}</td>
+                    <td>
+                        <div class="row2">
+                            <a href="?edite={{id}}" class="button">
+                                <i class="ri-edit-line"></i>
+                            </a>
+                            <a href="{{ url_for('vendas.remove_iten', id=id ) }}" class="button button2">
+                                <i class="ri-delete-bin-2-line"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
         </table>
     </div>
 
