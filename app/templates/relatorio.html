@@ -6,71 +6,80 @@
     <span class="text_size">Veja o desempenho do negócio por período e quais produtos mais dão lucro.</span>
 </div>
 
-<form action="" class="row2">
+<form action="" method="post" class="row2">
     <div class="entry">
         <span>DATA INÍCIO</span>
-        <input type="date" name="data_start" id="" class="input">
+        <input type="date" name="data_start" class="input" value="{{ data_start or '' }}">
     </div>
     <div class="entry">
-        <span>DATA FIN</span>
-        <input type="date" name="data_end" id="" class="input">
+        <span>DATA FIM</span>
+        <input type="date" name="data_end" class="input" value="{{ data_end or '' }}">
     </div>
     <div class="column">
         <span></span><span></span>
-        <button class="button">
+        <button class="button" type="submit">
             <span>Filtrar</span>
         </button>
     </div>
 </form>
 
 <div class="content_cards row2">
-
     <div class="card column">
-        <span class="text_size">LUCRO NO PERÍUDO</span>
-        <strong>kz 0,00</strong>
+        <span class="text_size">LUCRO NO PERÍODO</span>
+        <strong>Kz {{ "%.2f"|format(resumo.lucro) }}</strong>
     </div>
     <div class="card column">
-        <span class="text_size">FATURAMENTO NO PERÍUDO</span>
-        <strong>kz 0,00</strong>
+        <span class="text_size">FATURAMENTO NO PERÍODO</span>
+        <strong>Kz {{ "%.2f"|format(resumo.faturamento) }}</strong>
     </div>
     <div class="card column">
-        <span class="text_size">VENDAS NO PERÍUDO</span>
-        <strong>0</strong>
+        <span class="text_size">VENDAS NO PERÍODO</span>
+        <strong>{{ resumo.vendas }}</strong>
     </div>
     <div class="card column">
-        <span class="text_size">TECKET MÉDIA</span>
-        <strong>kz 0,00</strong>
+        <span class="text_size">TICKET MÉDIO</span>
+        <strong>Kz {{ "%.2f"|format(resumo.ticket_medio) }}</strong>
     </div>
-
 </div>
 
 <div class="content_box">
-    <strong>Últimas vendas</strong>
+    <strong>Lucro por produto</strong>
 
-    {% if 0==1 %}
-
-    <div class="table">
-        <table>
-            <thead>
-                <tr>
-                    <td>PRODUTO</td>
-                    <td>QTD</td>
-                    <td>SUBTOTAL</td>
-                    <td>DATA</td>
-                </tr>
-            </thead>
-        </table>
-    </div>
-
+    {% if lucro %}
+        {% for item in lucro %}
+        <div class="barra-linha">
+            <span class="nome">{{ item.nome_produto }}</span>
+            <div class="barra-fundo">
+                <div class="barra-preenchida" style="width: {{ item.percentual }}%;"></div>
+            </div>
+            <span class="valor">Kz {{ "%.2f"|format(item.total_lucro) }}</span>
+        </div>
+        {% endfor %}
     {% else %}
     <div class="not_iten">
-
         <span class="text_size">Nenhuma venda registrada ainda.</span>
-
     </div>
     {% endif %}
-
-
 </div>
 
-{% endblock %}o
+<div class="content_box">
+    <strong>Produto mais vendido (quantidade)</strong>
+
+    {% if vendidos %}
+        {% for item in vendidos %}
+        <div class="barra-linha">
+            <span class="nome">{{ item.nome_produto }}</span>
+            <div class="barra-fundo">
+                <div class="barra-preenchida" style="width: {{ item.percentual }}%;"></div>
+            </div>
+            <span class="valor">{{ item.total_qtd }} un.</span>
+        </div>
+        {% endfor %}
+    {% else %}
+    <div class="not_iten">
+        <span class="text_size">Nenhuma venda registrada ainda.</span>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

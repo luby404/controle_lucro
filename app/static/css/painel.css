@@ -99,3 +99,46 @@
 .content_cards .card span {
     opacity: .7;
 }
+
+/* Barra chart */
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.barra-linha {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.nome {
+  width: 100px;
+  font-size: 14px;
+  color: #444;
+}
+
+.barra-fundo {
+  flex: 1;
+  background: #f0ece2; /* fundo bege claro, como no seu design */
+  border-radius: 6px;
+  height: 22px;
+  overflow: hidden;
+}
+
+.barra-preenchida {
+  height: 100%;
+  background: #b8862e; /* dourado/mostarda, igual ao print */
+  border-radius: 6px;
+  transition: width 0.4s ease;
+}
+
+.valor {
+  min-width: 90px;
+  text-align: right;
+  font-weight: bold;
+  font-size: 14px;
+}
