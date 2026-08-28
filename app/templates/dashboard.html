@@ -9,21 +9,21 @@
 
 <div class="content_painel column">
 
-    <span class="text_size text_color">LUCRO TOTAL HOJE</span>
+    <span class="text_size text_color">FATURAMENTO TOTAL HOJE</span>
 
-    <strong class="price_color">kz 68.430,00</strong>
+    <strong class="price_color">{{ dados.saldo }}</strong>
 
     <hr>
     <div class="row">
-        <span class="text_size text_color">0 vendas registradas</span>
-        <span class="text_size text_color">12/08/2026</span>
+        <span class="text_size text_color">{{ dados.vendas.count() }} vendas registradas</span>
+        <span class="text_size text_color">{{ dados.data }}</span>
     </div>
 </div>
 
-<div class="content_box">
+<div class="content_box column">
     <strong>Últimas vendas</strong>
 
-    {% if 0==1 %}
+    {% if dados.vendas %}
 
     <div class="table">
         <table>
@@ -31,10 +31,20 @@
                 <tr>
                     <td>PRODUTO</td>
                     <td>QTD</td>
-                    <td>SUBTOTAL</td>
-                    <td>DATA</td>
+                    <td>TOTAL</td>
+                    <td>DATA E HORA</td>
                 </tr>
             </thead>
+            <tbody>
+                {% for venda in dados.vendas %}
+                    <tr>
+                        <td>{{ venda.nome_produto }}</td>
+                        <td>{{ venda.qtd }}</td>
+                        <td>{{ venda.total }}</td>
+                        <td>{{ venda.criado_em }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
         </table>
     </div>
 

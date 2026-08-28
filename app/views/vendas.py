@@ -101,7 +101,6 @@ def finalizar():
         if produto:
             qtd      = int(p["qtd"])
             total    = produto.preco_venda * qtd
-            subtotal = 0
             lucro    = produto.preco_venda - produto.preco_compra
 
 
@@ -109,7 +108,6 @@ def finalizar():
                 produto=produto,
                 nome_produto=produto.nome,
                 qtd=qtd,
-                subtotal=subtotal,
                 lucro=lucro * qtd,
                 total=total,
                 usuario=None

@@ -1,9 +1,10 @@
 import peewee as orm
-
+from datetime import datetime
 
 db = orm.SqliteDatabase("banco.db")
 
 class Model(orm.Model):
+    criado_em = orm.DateTimeField(default=datetime.now)
     class Meta:
         database = db
 
@@ -34,7 +35,6 @@ class Vendas(Model):
     nome_produto = orm.CharField(max_length=256)
     qtd      = orm.IntegerField()
 
-    subtotal = orm.DecimalField(decimal_places=2, max_digits=16)
     lucro    = orm.DecimalField(decimal_places=2, max_digits=16)
     total    = orm.DecimalField(decimal_places=2, max_digits=16)
 

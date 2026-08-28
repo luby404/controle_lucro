@@ -81,7 +81,7 @@
 
 .table {
     position: relative;
-    max-height: calc(100dvh - 270px);
+    max-height: calc(100dvh - 400px);
     overflow-y: auto;
     overflow-x: auto;
 }
@@ -99,8 +99,13 @@ table thead tr {
     position: sticky;
     top: 0;
     left: 0;
-    opacity: .7;
     border-bottom: 1px solid #d2d2d2;
+    background-color: #FFF;
+    z-index: 9999;
+}
+
+table thead tr td {
+    opacity: .7;
 }
 
 table td {
