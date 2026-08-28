@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de lucro</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/painel.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <div class="app_painel">
+
+        <section class="content_menu">
+
+            <div class="menu column">
+
+                <div class="column">
+                    <span class="text_size text_color">Caderno digital</span>
+                    <strong>Controle de Lucro</strong>
+                </div>
+
+                <hr>
+
+                <nav class="column">
+                    <a href="{{ url_for('dh.index' ) }}" class="iten_menu">
+                        <i class="ri-function-line"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="{{ url_for('produtos.index' ) }}" class="iten_menu">
+                        <i class="ri-box-3-line"></i>
+                        <span>Produtos</span>
+                    </a>
+                    <a href="{{ url_for('vendas.index' ) }}" class="iten_menu">
+                        <i class="ri-file-list-line"></i>
+                        <span>Vendas</span>
+                    </a>
+                    <a href="{{ url_for('relatorio.index' ) }}" class="iten_menu">
+                        <i class="ri-line-chart-line"></i>
+                        <span>Relatórios</span>
+                    </a>
+                </nav>
+
+            </div>
+
+        </section>
+        <section class="content_root">
+
+            <main id="root" class="column">
+                {% block root %}
+
+                {% endblock %}
+            </main>
+
+        </section>
+
+    </div>
+    <script>
+
+        document.querySelectorAll(".menu .iten_menu").forEach(element => {
+            if (window.location.pathname == element.getAttribute("href")){
+                element.classList.add("ative")
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>

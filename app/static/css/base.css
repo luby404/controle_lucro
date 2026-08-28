@@ -1,0 +1,180 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-family: 'IBM Plex Mono', monospace;
+    -webkit-font-smoothing: antialiased;
+}
+
+:root {
+    --primaria: #1F4B3F;
+    --primaria-ative: #1f6552;
+    --bg: #F3EFE2;
+
+    --text: #FFF;
+    --text2: #000;
+
+    --card: #2e2a2443;
+    --gold: #eab55a;
+}
+
+
+
+.button {
+    text-decoration: none;
+    color: var(--text);
+    background-color: var(--primaria);
+    padding: 10px;
+    font-size: .8rem;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.button2 {
+    background-color: var(--text);
+    box-shadow: 0 0 5px -2px #000000;
+    color: var(--text2);
+}
+
+
+.button3 {
+    width: 100%;
+}
+
+.max_width {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 900px;
+    padding: 10px 1rem;
+
+}
+
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.row2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.table {
+    position: relative;
+    max-height: calc(100dvh - 270px);
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+.table table {
+    border-collapse: collapse;
+    font-size: .8rem;
+    width: 100%;
+
+
+}
+
+table thead tr {
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    left: 0;
+    opacity: .7;
+    border-bottom: 1px solid #d2d2d2;
+}
+
+table td {
+    padding: 7px;
+    text-wrap: nowrap;
+}
+
+table tbody {
+    font-weight: 500;
+    opacity: .6;
+}
+
+table tbody tr{
+    border-top: 1px solid #d2d2d2;
+}
+
+.entry {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+}
+.entry>span {
+    font-size: .8rem;
+}
+
+.input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 0;
+    width: 100%;
+    background-color: #d2d2d2;
+}
+
+
+
+
+
+.link {
+    text-decoration: none;
+    color: var(--text2);
+    font-weight: bold;
+}
+
+.text_size {
+    font-size: .8rem;
+}
+
+.text_color {
+    color: var(--gold);
+}
+
+.text_center {
+    text-align: center;
+}
+
+.logo {
+    text-decoration: none;
+    color: var(--secundaria);
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+
+
+@media (max-width:700px) {
+    .row3 {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .iten_menu span {
+        display: none;
+    }
+}

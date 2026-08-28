@@ -1,0 +1,44 @@
+{% extends 'leyout.html' %}
+
+{% block root %}
+<div class="column">
+    <strong>Vendas</strong>
+    <span class="text_size">Registre uma venda para dar baixa no estoque e somar o lucro.</span>
+</div>
+
+<form action="">
+    <button>
+        <span>Cadastrar</span>
+    </button>
+</form>
+
+<div class="content_box">
+    <strong>Últimas vendas</strong>
+
+    {% if 0==1 %}
+
+    <div class="table">
+        <table>
+            <thead>
+                <tr>
+                    <td>PRODUTO</td>
+                    <td>QTD</td>
+                    <td>SUBTOTAL</td>
+                    <td>DATA</td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    {% else %}
+    <div class="not_iten">
+
+        <span class="text_size">Nenhuma venda registrada ainda.</span>
+
+    </div>
+    {% endif %}
+
+
+</div>
+
+{% endblock %}o

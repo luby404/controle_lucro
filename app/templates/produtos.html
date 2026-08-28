@@ -1,0 +1,131 @@
+{% extends 'leyout.html' %}
+
+{% block root %}
+<div class="column">
+    <strong>Produtos</strong>
+    <span class="text_size">Cadastre o preço de compra e de venda. O lucro por unidade é calculado sozinho.</span>
+
+</div>
+
+<form
+    action="{{ url_for('produtos.new_produto' ) if not produto else url_for('produtos.update_produto', id=produto.id )  }}"
+    method="post" class="content_box column">
+
+    {% if produto %}
+    <strong>Editar produto</strong>
+    <div class="row2">
+
+        <div class="entry">
+            <span>NOME DO PRODUTO</span>
+            <input type="text" required value="{{ produto.nome }}" name="nome" placeholder="ex: Zip Cola" class="input">
+        </div>
+        <div class="entry">
+            <span>PREÇO DE COMPRA</span>
+            <input type="number" required value="{{ produto.preco_compra }}" name="compra" placeholder="0,00"
+                class="input">
+        </div>
+        <div class="entry">
+            <span>PRECO DE VENDA</span>
+            <input type="number" required value="{{ produto.preco_venda }}" name="venda" placeholder="0,00"
+                class="input">
+        </div>
+
+        <div class="column">
+            <span></span>
+            <span></span>
+            <div class="row2">
+                <a href="{{ url_for('produtos.index' ) }}" class="button button2">
+                    <span>Cancelar</span>
+                </a>
+                <button class="button">
+                    <span>Salvar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <strong>Novo produto</strong>
+    <div class="row2">
+
+        <div class="entry">
+            <span>NOME DO PRODUTO</span>
+            <input type="text" required name="nome" placeholder="ex: Zip Cola" class="input">
+        </div>
+        <div class="entry">
+            <span>PREÇO DE COMPRA</span>
+            <input type="number" required name="compra" placeholder="0,00" class="input">
+        </div>
+        <div class="entry">
+            <span>PRECO DE VENDA</span>
+            <input type="number" required name="venda" placeholder="0,00" class="input">
+        </div>
+
+        <div class="column">
+            <span></span>
+            <span></span>
+            <button class="button">
+                <span>Cadastrar</span>
+            </button>
+        </div>
+    </div>
+
+    {% endif %}
+
+
+</form>
+
+
+
+<div class="content_box column">
+    <div class="row">
+        <strong>Produtos cadastrados</strong>
+    </div>
+
+    {% if produtos %}
+
+    <div class="table">
+        <table>
+            <thead>
+                <tr>
+                    <td>PRODUTO</td>
+                    <td>COMPRA</td>
+                    <td>VENDA</td>
+                    <td>LUCRO</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in produtos %}
+                <tr>
+                    <td>{{ p.nome }}</td>
+                    <td>{{ p.preco_compra }}</td>
+                    <td>{{ p.preco_venda }}</td>
+                    <td>{{ p.lucro }}</td>
+                    <td>
+                        <div class="row2">
+                            <a href="?edite={{p.id}}" class="button">
+                                <i class="ri-edit-line"></i>
+                            </a>
+                            <a href="{{ url_for('produtos.delete_produto', id=p.id ) }}" class="button button2">
+                                <i class="ri-delete-bin-2-line"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% else %}
+    <div class="not_iten">
+
+        <span class="text_size">Nenhuma venda registrada ainda.</span>
+
+    </div>
+    {% endif %}
+
+
+</div>
+
+{% endblock %}o
