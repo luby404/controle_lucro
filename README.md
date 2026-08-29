@@ -1,24 +1,16 @@
 # Controle de Lucro
 
-Sistema web para pequenos negócios (ex: cantinas) controlarem o lucro das suas vendas de forma simples: cadastra os produtos com preço de compra e venda, regista as vendas, e o sistema calcula automaticamente quanto entrou de dinheiro e quanto foi de lucro.
-
-**Pagina Inicial**
-<img src="./app/static/img/1.png" />
-**Pagina Produtos**
-<img src="./app/static/img/2.png" />
-**Pagina de Vendas**
-<img src="./app/static/img/3.png" />
-**Pagina Relatórios**
-<img src="./app/static/img/4.png" />
-
-
+Sistema web para pequenos negócios (ex: cantinas) 
+controlarem o lucro das suas vendas de forma simples: 
+cadastra os produtos com preço de compra e venda, regista as vendas, 
+e o sistema calcula automaticamente quanto entrou de dinheiro e quanto foi de lucro
 
 ## Funcionalidades
 
-- **Cadastro de produtos** — nome, preço de compra, preço de venda e estoque.
-- **Controlo de vendas** — regista a venda de um produto, dá baixa automática no estoque.
-- **Cálculo automático de lucro** — lucro por produto, por venda e lucro total acumulado.
-- **Faturamento/Relatórios** — total de dinheiro que entrou (receita), separado do lucro.
+- **Cadastro de produtos** — nome, preço de compra, preço de venda e estoque
+- **Controlo de vendas** — regista a venda de um produto, dá baixa automática no estoque
+- **Cálculo automático de lucro** — lucro por produto, por venda e lucro total acumulado
+- **Faturamento/Relatórios** — total de dinheiro que entrou (receita), separado do lucro
 
 ## Tecnologias
 
@@ -30,46 +22,9 @@ Sistema web para pequenos negócios (ex: cantinas) controlarem o lucro das suas 
 ## Requisitos
 
 - Python 3.9 ou superior
-- pip
+- uv
 
-## Instalação
-
-```bash
-# Clonar ou entrar na pasta do projeto
-cd controle_lucro
-
-# Criar ambiente virtual (recomendado)
-# Instalar dependências
-uv sync
-```
-
-### `requirements.txt` sugerido
-
-```
-flask
-peewee
-```
-
-## Configuração da base de dados
-
-O projeto usa SQLite3 através do Peewee, então não é preciso instalar nenhum servidor de base de dados à parte. 
-O ficheiro `.db` é criado automaticamente na primeira execução.
-
-A possibilidades de integrar outros banco de dados
-
-## Como executar
-
-```bash
-uv run flask run --debug # rodar em desenvolvimento com hotreload
-```
-
-Por padrão, o sistema fica disponível em:
-
-```
-http://127.0.0.1:5000
-```
-
-## Estrutura do projeto (sugerida)
+## Estrutura do projeto
 
 ```
 .
@@ -119,7 +74,3 @@ http://127.0.0.1:5000
 2. Ir a **Produtos** e cadastrar o produto com preço de compra, preço de venda e quantidade em estoque.
 3. Ir a **Vendas** e registar a venda do produto — o estoque é atualizado automaticamente.
 4. Consultar o **Painel** para ver o total de dinheiro que entrou (faturamento) e o lucro total acumulado.
-
-## Licença
-
-Projeto de uso Publico
