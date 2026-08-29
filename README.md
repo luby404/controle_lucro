@@ -2,13 +2,13 @@
 
 Sistema web para pequenos negócios (ex: cantinas) controlarem o lucro das suas vendas de forma simples: cadastra os produtos com preço de compra e venda, regista as vendas, e o sistema calcula automaticamente quanto entrou de dinheiro e quanto foi de lucro.
 
-- **Pagina Inicial**
+**Pagina Inicial**
 <img src="./app/static/img/1.png" />
-- **Pagina Produtos**
+**Pagina Produtos**
 <img src="./app/static/img/2.png" />
-- **Pagina de Vendas**
+**Pagina de Vendas**
 <img src="./app/static/img/3.png" />
-- **Pagina Relatórios**
+**Pagina Relatórios**
 <img src="./app/static/img/4.png" />
 
 
